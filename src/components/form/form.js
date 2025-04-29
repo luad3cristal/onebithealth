@@ -5,21 +5,28 @@ import styles from "./style";
 import ResultImc from "./resultimc";
 
 export default function Form() {
-  const [height, setHeight] = useState(null);
-  const [weight, setWeight] = useState(null);
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
   const [messageIMC, setMessageIMC] = useState("Preencha o peso e altura");
   const [IMC, setIMC] = useState(null);
   const [textButton, setTextButton] = useState("Calcular IMC");
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const imcCalculator = () => {
+    setHeight(parseFloat(height));
+    setWeight(parseFloat(weight));
     return setIMC((weight / (height * height)).toFixed(2));
   };
 
+  const verificationIMC = () => {
+    if (IMC == null) setErrorMessage("campo obrigatório*");
+  };
+
   const validationIMC = () => {
-    if (weight != null && height != null) {
+    if (weight != "" && height != "") {
       imcCalculator();
-      setHeight(null);
-      setWeight(null);
+      setHeight("");
+      setWeight("");
       setMessageIMC("Seu imc é igual: ");
       setTextButton("Calcular Novamente");
       return;
@@ -28,6 +35,7 @@ export default function Form() {
     setIMC(null);
     setTextButton("Calcular");
     setMessageIMC("Preencha o peso e altura");
+    setErrorMessage(null);
   };
 
   return (
