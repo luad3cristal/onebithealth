@@ -8,6 +8,8 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   numberImc: {
+    width: "100%",
+    textAlign: "center",
     fontSize: 48,
     color: "#ff0043",
     fontWeight: "bold",
