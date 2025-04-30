@@ -51,9 +51,9 @@ export default function Form() {
   };
 
   return (
-    <Pressable onPress={Keyboard.dismiss} style={styles.formContext}>
+    <View onPress={Keyboard.dismiss} style={styles.formContext}>
       {IMC == null ? (
-        <View style={styles.form}>
+        <Pressable style={styles.form}>
           <Text style={styles.formLabel}>Altura</Text>
           <Text style={styles.errorMessage}>{errorMessage}</Text>
           <TextInput
@@ -80,7 +80,7 @@ export default function Form() {
           >
             <Text style={styles.textButtonCalculator}>{textButton}</Text>
           </TouchableOpacity>
-        </View>
+        </Pressable>
       ) : (
         <View style={styles.exhibitonResultImc}>
           <ResultImc message={messageIMC} result={IMC} />
@@ -93,6 +93,6 @@ export default function Form() {
           </TouchableOpacity>
         </View>
       )}
-    </Pressable>
+    </View>
   );
 }
